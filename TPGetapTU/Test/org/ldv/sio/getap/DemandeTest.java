@@ -22,7 +22,7 @@ public class DemandeTest {
 				20, 
 				new User(1L,"Capuozzo", "Olivier",new Classe(1,"SIO22"),"prof-principal","okpu","toto","okpu@gmail.fr"),
 				new AccPersonalise(),
-				new User(2L,"Ben Ragdel", "Nizar",new Classe(1,"SIO22"),"eleve","nini","toto","nizar@gmail.fr"), 
+				new User(2L,"FABRE", "ALLAN",new Classe(1,"SIO22"),"eleve","nini","toto","nizar@gmail.fr"), 
 				0);
 		
 		assertTrue("Etat initial", dvctap.isEtatInitial());
