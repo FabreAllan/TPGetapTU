@@ -18,7 +18,7 @@ class Exemple {
 		System.out.println(dvctap);
 		dvctap.setEtat(32);
 		System.out.println(dvctap);
-		dvctap.setEtat(41);
+		dvctap.setEtat(4);
 		System.out.println(dvctap);
 		dvctap.setEtat(2048);
 		System.out.println(dvctap);
