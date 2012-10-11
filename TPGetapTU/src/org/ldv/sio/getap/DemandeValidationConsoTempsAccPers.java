@@ -47,6 +47,10 @@ public class DemandeValidationConsoTempsAccPers {
 	 * 
 	 */
 	private int etat;
+	
+	public boolean isEtatInitial(){
+		return this.etat == 0;
+	}
 
 	/**
 	 * constructeur par défaut

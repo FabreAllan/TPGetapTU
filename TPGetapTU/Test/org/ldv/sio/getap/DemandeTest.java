@@ -24,6 +24,8 @@ public class DemandeTest {
 				new AccPersonalise(),
 				new User(2L,"Ben Ragdel", "Nizar",new Classe(1,"SIO22"),"eleve","nini","toto","nizar@gmail.fr"), 
 				0);
+		
+		assertTrue("Etat initial", dvctap.isEtatInitial());
 	}
 
 }
