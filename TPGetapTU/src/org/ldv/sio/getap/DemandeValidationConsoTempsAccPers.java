@@ -47,7 +47,7 @@ public class DemandeValidationConsoTempsAccPers {
 	 * 
 	 */
 	private int etat;
-	
+
 	public boolean isEtatInitial(){
 		return this.etat == 0;
 	}
@@ -173,7 +173,7 @@ public class DemandeValidationConsoTempsAccPers {
 		this.etat = etat;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "DemandeConsoTempsAccPers [id=" + id + ", anneeScolaire="
