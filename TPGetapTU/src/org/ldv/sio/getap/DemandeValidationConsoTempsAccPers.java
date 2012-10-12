@@ -9,8 +9,13 @@ import java.sql.Date;
  */
 
 public class DemandeValidationConsoTempsAccPers {
-	
-	
+	private static final int demande_creer_eleve=0;
+	private static final int demande_accepter_eleve=1;
+	private static final int demande_rejet_eleve=2;
+	private static final int deman_modif_eleve=4;
+	private static final int deman_annul_eleve=8;
+	private static final int valid_prof=32;
+	private static final int deman_ref_rpf = 64;
 	private static final int DATE_MODIFIEE = 1024;
 	private static final int DUREE_MODIFIEE = 2048;
 	private static final int AP_MODIFIEE = 4096;
@@ -174,8 +179,23 @@ public class DemandeValidationConsoTempsAccPers {
 	public void setEtat(int etat) {
 		this.etat = etat;
 	}
-
-
+   public boolean isdemande_creer_eleve() {   
+	return ((this.etat & demande_creer_eleve) == 0);  
+   }
+   public boolean isdemande_accepter_eleve() {  
+	    return ((this.etat & demande_accepter_eleve) != 0);
+	    }
+	   
+	   
+  
+   
+   
+   
+   public void modifParElev(){
+	   if ( isdemande_creer_eleve()==true ) 
+	   this.etat = this.etat | deman_modif_eleve;
+   }
+   
 	@Override
 	public String toString() {
 		return "DemandeConsoTempsAccPers [id=" + id + ", anneeScolaire="
