@@ -28,7 +28,6 @@ public class DemandeTest {
 		try{
 			assertTrue("Etat initial", dvctap.isEtatInitial());
 		}
-
 		catch(DVCTAPException e){
 		}
 	}
