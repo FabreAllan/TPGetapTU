@@ -4,7 +4,11 @@ import java.sql.Date;
 
 class Exemple {
 
-	private DemandeValidationConsoTempsAccPers dvctap;
+	private static DemandeValidationConsoTempsAccPers dvctap;
+	
+	public Exemple(){
+		
+	}
 
 	static public void main(String[] args) {
 		Classe classe  = new Classe(1,"SIO22");
@@ -14,7 +18,7 @@ class Exemple {
 		AccPersonalise accPerso = new AccPersonalise(1,"Salon du libre",1,1L);
 		Date date = Date.valueOf("07-10-2012");
 		
-		DemandeValidationConsoTempsAccPers dvctap = new DemandeValidationConsoTempsAccPers(1L, "2012-2013", date, 20, prof,accPerso,eleve, 0);
+		dvctap = new DemandeValidationConsoTempsAccPers(1L, "2012-2013", date, 20, prof,accPerso,eleve, 0);
 		
 		System.out.println(dvctap);
 		dvctap.setEtat(4);

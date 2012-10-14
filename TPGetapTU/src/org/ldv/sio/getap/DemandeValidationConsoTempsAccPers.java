@@ -180,7 +180,7 @@ public class DemandeValidationConsoTempsAccPers {
 		this.etat = etat;
 	}
     public boolean isdemande_creer_eleve() {   
-	    return ((this.etat & demande_creer_eleve) == 0);  
+	    return ((this.etat & demande_creer_eleve) != 0);  
     }
     public boolean isdemande_accepter_eleve() {  
 	    return ((this.etat & demande_accepter_eleve) != 0);
@@ -219,35 +219,35 @@ public class DemandeValidationConsoTempsAccPers {
 	}
 
 	public boolean valideeParLeProfesseur() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | demande_valid_prof;
 		}else{
 			System.out.println("La demande ne peux être valider par le professeur !");
-			flag = false;
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean refuseeParLeProfesseur() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_annul_eleve() && !this.isdemande_valid_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_refus_prof()) {
 			this.etat = this.etat | demande_rejet_eleve;
 		}else{
-			System.out.println("Erreur lors du changement de l'état !");
-			flag = false;
+			System.out.println("La demande ne peut être rejeté par l'élève !");
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean annuleeParEleve() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isAP_MODIFIEE() && !this.isDUREE_MODIFIEE()
@@ -256,74 +256,74 @@ public class DemandeValidationConsoTempsAccPers {
 			this.etat = this.etat | demande_annul_eleve;
 		}else{
 			System.out.println("La demande ne peut être annulé par l'élève !");
-			flag = false;
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean modifieeParEleve() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isAP_MODIFIEE() && !this.isDUREE_MODIFIEE()
 				&& !this.isDATE_MODIFIEE() && !this.isdemande_annul_eleve()) {
 			this.etat = this.etat | demande_modif_eleve;
 		}else{
-			System.out.println("Erreur lors du changement de l'état !");
-			flag = false;
+			System.out.println("La demande ne peut être modifié par l'élève !");
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean modifieeDateParLeProfesseur() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | DATE_MODIFIEE;
 		}else{
-			System.out.println("Erreur lors du changement de l'état !");
-			flag = false;
+			System.out.println("La date ne peut être modifiée !");
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean modifieeDureeParLeProfesseur() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | DUREE_MODIFIEE;
 		}else{
-			System.out.println("Erreur lors du changement de l'état !");
-			flag = false;
+			System.out.println("La duree ne peut être modifiée !");
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean modifieeParLeProfesseur() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | AP_MODIFIEE;
 		}else{
-			System.out.println("Erreur lors du changement de l'état !");
-			flag = false;
+			System.out.println("La discipline ne peut être modifiée !");
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean rejeteParEleve() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof()
 				&& !this.isdemande_accepter_eleve()
 				&& !this.isdemande_annul_eleve()
@@ -334,15 +334,15 @@ public class DemandeValidationConsoTempsAccPers {
 						.isDUREE_MODIFIEE())) {
 			this.etat = this.etat | demande_rejet_eleve;
 		}else{
-			System.out.println("La demande ne peux être rejeté par le professeur !");
-			flag = false;
+			System.out.println("La demande ne peux être rejeté par le professeur!");
+			valeur = false;
 		}
-		return flag;
+		return valeur;
 	}
 
 
 	public boolean accepteeParEleve() throws DVCTAPException {
-		boolean flag = true;
+		boolean valeur = true;
 		if (!this.isdemande_valid_prof()
 				&& !this.isdemande_rejet_eleve()
 				&& !this.isdemande_annul_eleve()
@@ -354,9 +354,9 @@ public class DemandeValidationConsoTempsAccPers {
 			this.etat = this.etat | demande_accepter_eleve;
 		}else{
 			System.out.println("La demande ne peux être accepté par l'élève !");
-			flag =  false;
+			valeur =  false;
 		}
-		return flag;
+		return valeur;
 	}
 
 	@Override

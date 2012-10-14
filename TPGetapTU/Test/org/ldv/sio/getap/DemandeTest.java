@@ -18,7 +18,7 @@ public class DemandeTest extends TestCase{
 		Classe classe = new Classe(1, "SIO22");
 		Discipline discipline = new Discipline(1, "SLAM4");
 		User eleve =  new User(2L,"Ben Ragdel", "Nizar",classe,"eleve","nini","toto","nizar@gmail.fr");
-		User prof =  new User(1L,"Capuozzo", "Olivier",classe,"prof-principal","okpu","toto","okpu@gmail.fr");
+		User prof =  new User(1L,"Capuozzo", "Olivier",classe,"prof-principa",discipline);
 		
 		AccPersonalise accPers = new AccPersonalise(1, "Salon du libre", 0, 1l);
 		Date date = Date.valueOf("2012-10-07");
@@ -28,7 +28,7 @@ public class DemandeTest extends TestCase{
 	}
 
 	@Test
-	public void test() {
+	public void testEtatInitial() {
 		try{
 			assertTrue("Etat initial", dvctap.isEtatInitial());
 		}
@@ -39,7 +39,6 @@ public class DemandeTest extends TestCase{
 	
 	public void testEtatDifferents() {
 		try{
-			dvctap.modifieeParEleve();
 			dvctap.modifieeParEleve();
 			dvctap.modifieeDateParLeProfesseur();
 			dvctap.modifieeDureeParLeProfesseur();
