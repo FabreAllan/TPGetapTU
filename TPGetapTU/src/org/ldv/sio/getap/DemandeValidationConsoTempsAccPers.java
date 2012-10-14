@@ -322,7 +322,7 @@ public class DemandeValidationConsoTempsAccPers {
 	}
 
 
-	public boolean rejeteParEleve() throws DVCTAPException {
+	public boolean rejeteeParEleve() throws DVCTAPException {
 		boolean valeur = true;
 		if (!this.isdemande_valid_prof()
 				&& !this.isdemande_accepter_eleve()

@@ -62,11 +62,11 @@ public class DemandeTest extends TestCase{
 
 	}
 	
-	public void testCreRejet(){
+	public void testRejet(){
 		try{
 			dvctap.setEtat(0);
-			dvctap.rejeteParEleve();
-			assertFalse("Demande rejeter par l'élève", dvctap.rejeteParEleve());
+			dvctap.rejeteeParEleve();
+			assertFalse("Demande rejeter par l'élève", dvctap.rejeteeParEleve());
 		}
 		catch(DVCTAPException e){
 		}
