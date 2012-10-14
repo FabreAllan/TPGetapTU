@@ -12,10 +12,10 @@ public class DemandeValidationConsoTempsAccPers {
 	private static final int demande_creer_eleve=0;
 	private static final int demande_accepter_eleve=1;
 	private static final int demande_rejet_eleve=2;
-	private static final int deman_modif_eleve=4;
-	private static final int deman_annul_eleve=8;
-	private static final int valid_prof=32;
-	private static final int deman_ref_rpf = 64;
+	private static final int demande_modif_eleve=4;
+	private static final int demande_annul_eleve=8;
+	private static final int demande_valid_prof=32;
+	private static final int demande_refus_prof = 64;
 	private static final int DATE_MODIFIEE = 1024;
 	private static final int DUREE_MODIFIEE = 2048;
 	private static final int AP_MODIFIEE = 4096;
@@ -179,23 +179,45 @@ public class DemandeValidationConsoTempsAccPers {
 	public void setEtat(int etat) {
 		this.etat = etat;
 	}
-   public boolean isdemande_creer_eleve() {   
-	return ((this.etat & demande_creer_eleve) == 0);  
-   }
-   public boolean isdemande_accepter_eleve() {  
+    public boolean isdemande_creer_eleve() {   
+	    return ((this.etat & demande_creer_eleve) == 0);  
+    }
+    public boolean isdemande_accepter_eleve() {  
 	    return ((this.etat & demande_accepter_eleve) != 0);
-	    }
-	   
-	   
-  
+	}
    
-   
-   
-   public void modifParElev(){
-	   if ( isdemande_creer_eleve()==true ) 
-	   this.etat = this.etat | deman_modif_eleve;
-   }
-   
+	public boolean isdemande_rejet_eleve() {
+		return ((this.etat & demande_rejet_eleve) != 0);
+	}
+
+	public boolean isdemande_modif_eleve() {
+		return ((this.etat & demande_modif_eleve) != 0);
+	}
+
+	public boolean isdemande_annul_eleve() {
+		return ((this.etat & demande_annul_eleve) != 0);
+	}
+
+	public boolean isdemande_valid_prof() {
+		return ((this.etat & demande_valid_prof) != 0);
+	}
+
+	public boolean isdemande_refus_prof() {
+		return ((this.etat & demande_refus_prof) != 0);
+	}
+
+	public boolean isDATE_MODIFIEE() {
+		return ((this.etat & DATE_MODIFIEE) != 0);
+	}
+
+	public boolean isDUREE_MODIFIEE() {
+		return ((this.etat & DUREE_MODIFIEE) != 0);
+	}
+
+	public boolean isEtatAccPersModifierProf() {
+		return ((this.etat & AP_MODIFIEE) != 0);
+	}
+
 	@Override
 	public String toString() {
 		return "DemandeConsoTempsAccPers [id=" + id + ", anneeScolaire="
