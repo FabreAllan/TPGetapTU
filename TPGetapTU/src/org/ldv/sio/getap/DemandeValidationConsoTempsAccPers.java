@@ -9,12 +9,12 @@ import java.sql.Date;
  */
 
 public class DemandeValidationConsoTempsAccPers {
-	private static final int demande_creer_eleve=0;
-	private static final int demande_accepter_eleve=1;
-	private static final int demande_rejet_eleve=2;
-	private static final int demande_modif_eleve=4;
-	private static final int demande_annul_eleve=8;
-	private static final int demande_valid_prof=32;
+	private static final int demande_creer_eleve = 0;
+	private static final int demande_accepter_eleve = 1;
+	private static final int demande_rejet_eleve = 2;
+	private static final int demande_modif_eleve = 4;
+	private static final int demande_annul_eleve = 8;
+	private static final int demande_valid_prof = 32;
 	private static final int demande_refus_prof = 64;
 	private static final int DATE_MODIFIEE = 1024;
 	private static final int DUREE_MODIFIEE = 2048;
@@ -214,7 +214,7 @@ public class DemandeValidationConsoTempsAccPers {
 		return ((this.etat & DUREE_MODIFIEE) != 0);
 	}
 
-	public boolean isEtatAccPersModifierProf() {
+	public boolean isAP_MODIFIEE() {
 		return ((this.etat & AP_MODIFIEE) != 0);
 	}
 
