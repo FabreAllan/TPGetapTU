@@ -218,6 +218,147 @@ public class DemandeValidationConsoTempsAccPers {
 		return ((this.etat & AP_MODIFIEE) != 0);
 	}
 
+	public boolean valideeParLeProfesseur() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isdemande_valid_prof()) {
+			this.etat = this.etat | demande_valid_prof;
+		}else{
+			System.out.println("La demande ne peux être valider par le professeur !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean refuseeParLeProfesseur() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_annul_eleve() && !this.isdemande_valid_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isdemande_refus_prof()) {
+			this.etat = this.etat | demande_rejet_eleve;
+		}else{
+			System.out.println("Erreur lors du changement de l'état !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean annuleeParEleve() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isAP_MODIFIEE() && !this.isDUREE_MODIFIEE()
+				&& !this.isDATE_MODIFIEE()
+				&& !this.isdemande_annul_eleve()) {
+			this.etat = this.etat | demande_annul_eleve;
+		}else{
+			System.out.println("La demande ne peut être annulé par l'élève !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean modifieeParEleve() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isAP_MODIFIEE() && !this.isDUREE_MODIFIEE()
+				&& !this.isDATE_MODIFIEE() && !this.isdemande_annul_eleve()) {
+			this.etat = this.etat | demande_modif_eleve;
+		}else{
+			System.out.println("Erreur lors du changement de l'état !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean modifieeDateParLeProfesseur() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
+				&& !this.isdemande_valid_prof()) {
+			this.etat = this.etat | DATE_MODIFIEE;
+		}else{
+			System.out.println("Erreur lors du changement de l'état !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean modifieeDureeParLeProfesseur() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
+				&& !this.isdemande_valid_prof()) {
+			this.etat = this.etat | DUREE_MODIFIEE;
+		}else{
+			System.out.println("Erreur lors du changement de l'état !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean modifieeParLeProfesseur() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
+				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
+				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
+				&& !this.isdemande_valid_prof()) {
+			this.etat = this.etat | AP_MODIFIEE;
+		}else{
+			System.out.println("Erreur lors du changement de l'état !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean rejeteParEleve() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof()
+				&& !this.isdemande_accepter_eleve()
+				&& !this.isdemande_annul_eleve()
+				&& !this.isdemande_refus_prof()
+				&& !this.isdemande_valid_prof()
+				&& !this.isdemande_rejet_eleve()
+				&& (this.isAP_MODIFIEE() || this.isDATE_MODIFIEE() || this
+						.isDUREE_MODIFIEE())) {
+			this.etat = this.etat | demande_rejet_eleve;
+		}else{
+			System.out.println("La demande ne peux être rejeté par le professeur !");
+			flag = false;
+		}
+		return flag;
+	}
+
+
+	public boolean accepteeParEleve() throws DVCTAPException {
+		boolean flag = true;
+		if (!this.isdemande_valid_prof()
+				&& !this.isdemande_rejet_eleve()
+				&& !this.isdemande_annul_eleve()
+				&& !this.isdemande_refus_prof()
+				&& !this.isdemande_valid_prof()
+				&& !this.isdemande_accepter_eleve()
+				&& (this.isAP_MODIFIEE() || this.isDATE_MODIFIEE() || this
+						.isDUREE_MODIFIEE())) {
+			this.etat = this.etat | demande_accepter_eleve;
+		}else{
+			System.out.println("La demande ne peux être accepté par l'élève !");
+			flag =  false;
+		}
+		return flag;
+	}
+
 	@Override
 	public String toString() {
 		return "DemandeConsoTempsAccPers [id=" + id + ", anneeScolaire="
