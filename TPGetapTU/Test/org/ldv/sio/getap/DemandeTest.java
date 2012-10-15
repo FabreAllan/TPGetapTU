@@ -100,7 +100,7 @@ public class DemandeTest extends TestCase{
 			dvctap.valideeParLeProfesseur();
 			dvctap.modifieeDateParLeProfesseur();
 			dvctap.rejeteeParEleve();
-			assertFalse("Etat modification professeur",dvctap.modifieeParEleve());
+			assertFalse("Etat rejet élève",dvctap.modifieeParEleve());
 			System.out.println(dvctap);
 		}
 		catch(DVCTAPException e){
