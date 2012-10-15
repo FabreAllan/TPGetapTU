@@ -224,8 +224,9 @@ public class DemandeValidationConsoTempsAccPers {
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | demande_valid_prof;
-		}else{
-			System.out.println("La demande ne peux être valider par le professeur !");
+		}
+		else{
+			System.out.println("Erreur de validation du professeur !");
 			valeur = false;
 		}
 		return valeur;
@@ -236,10 +237,11 @@ public class DemandeValidationConsoTempsAccPers {
 		boolean valeur = true;
 		if (!this.isdemande_annul_eleve() && !this.isdemande_valid_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
-				&& !this.isdemande_refus_prof()) {
+				&& !this.isdemande_refus_prof()){
 			this.etat = this.etat | demande_rejet_eleve;
-		}else{
-			System.out.println("La demande ne peut être rejeté par l'élève !");
+		}
+		else{
+			System.out.println("Erreur de refus du professeur !");
 			valeur = false;
 		}
 		return valeur;
@@ -251,11 +253,11 @@ public class DemandeValidationConsoTempsAccPers {
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isAP_MODIFIEE() && !this.isDUREE_MODIFIEE()
-				&& !this.isDATE_MODIFIEE()
-				&& !this.isdemande_annul_eleve()) {
+				&& !this.isDATE_MODIFIEE() && !this.isdemande_annul_eleve()) {
 			this.etat = this.etat | demande_annul_eleve;
-		}else{
-			System.out.println("La demande ne peut être annulé par l'élève !");
+		}
+		else{
+			System.out.println("Erreur d'annulation de l'élève !");
 			valeur = false;
 		}
 		return valeur;
@@ -269,8 +271,9 @@ public class DemandeValidationConsoTempsAccPers {
 				&& !this.isAP_MODIFIEE() && !this.isDUREE_MODIFIEE()
 				&& !this.isDATE_MODIFIEE() && !this.isdemande_annul_eleve()) {
 			this.etat = this.etat | demande_modif_eleve;
-		}else{
-			System.out.println("La demande ne peut être modifié par l'élève !");
+		}
+		else{
+			System.out.println("Erreur de modification de l'élève !");
 			valeur = false;
 		}
 		return valeur;
@@ -284,8 +287,9 @@ public class DemandeValidationConsoTempsAccPers {
 				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | DATE_MODIFIEE;
-		}else{
-			System.out.println("La date ne peut être modifiée !");
+		}
+		else{
+			System.out.println("Erreur de modification de date par le professeur !");
 			valeur = false;
 		}
 		return valeur;
@@ -299,23 +303,25 @@ public class DemandeValidationConsoTempsAccPers {
 				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | DUREE_MODIFIEE;
-		}else{
-			System.out.println("La duree ne peut être modifiée !");
+		}
+		else{
+			System.out.println("Erreur de modification de durée par le professeur !");
 			valeur = false;
 		}
 		return valeur;
 	}
 
 
-	public boolean modifieeParLeProfesseur() throws DVCTAPException {
+	public boolean modifieeAPParLeProfesseur() throws DVCTAPException {
 		boolean valeur = true;
 		if (!this.isdemande_valid_prof() && !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve() && !this.isdemande_rejet_eleve()
 				&& !this.isdemande_annul_eleve() && !this.isdemande_refus_prof()
 				&& !this.isdemande_valid_prof()) {
 			this.etat = this.etat | AP_MODIFIEE;
-		}else{
-			System.out.println("La discipline ne peut être modifiée !");
+		}
+		else{
+			System.out.println("Erreur de modification de l'accompagnement personnalisé par le professeur !");
 			valeur = false;
 		}
 		return valeur;
@@ -325,6 +331,7 @@ public class DemandeValidationConsoTempsAccPers {
 	public boolean rejeteeParEleve() throws DVCTAPException {
 		boolean valeur = true;
 		if (!this.isdemande_valid_prof()
+				&& !this.isdemande_refus_prof()
 				&& !this.isdemande_accepter_eleve()
 				&& !this.isdemande_annul_eleve()
 				&& !this.isdemande_refus_prof()
@@ -334,7 +341,7 @@ public class DemandeValidationConsoTempsAccPers {
 						.isDUREE_MODIFIEE())) {
 			this.etat = this.etat | demande_rejet_eleve;
 		}else{
-			System.out.println("La demande ne peux être rejeté par le professeur!");
+			System.out.println("Erreur de rejet de l'élève !");
 			valeur = false;
 		}
 		return valeur;
@@ -344,6 +351,7 @@ public class DemandeValidationConsoTempsAccPers {
 	public boolean accepteeParEleve() throws DVCTAPException {
 		boolean valeur = true;
 		if (!this.isdemande_valid_prof()
+				&& !this.isdemande_refus_prof()
 				&& !this.isdemande_rejet_eleve()
 				&& !this.isdemande_annul_eleve()
 				&& !this.isdemande_refus_prof()
@@ -353,7 +361,7 @@ public class DemandeValidationConsoTempsAccPers {
 						.isDUREE_MODIFIEE())) {
 			this.etat = this.etat | demande_accepter_eleve;
 		}else{
-			System.out.println("La demande ne peux être accepté par l'élève !");
+			System.out.println("Erreur d'acceptation de l'élève !");
 			valeur =  false;
 		}
 		return valeur;
