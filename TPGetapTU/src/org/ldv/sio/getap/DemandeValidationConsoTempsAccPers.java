@@ -179,9 +179,11 @@ public class DemandeValidationConsoTempsAccPers {
 	public void setEtat(int etat) {
 		this.etat = etat;
 	}
+	
     public boolean isdemande_creer_eleve() {   
 	    return ((this.etat & demande_creer_eleve) != 0);  
     }
+    
     public boolean isdemande_accepter_eleve() {  
 	    return ((this.etat & demande_accepter_eleve) != 0);
 	}
